@@ -1,3 +1,8 @@
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class WeatherMain {
@@ -17,12 +22,19 @@ public class WeatherMain {
         System.out.println("Port: "+Credentials.getPort());
         System.out.println("API Key: "+ Credentials.getApiKey());
         System.out.println("Done.");
+        url = "http://api.wunderground.com/api/"+Credentials.getApiKey()+"/conditions/q/"+stateTarget+"/"+cityTarget+".xml";
 
+
+        try {//this is to connect to the website and pull the data
+            Document doc = Jsoup.connect(url).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static String parseCity(String cityTarget){//this takes the city entered and parses all spaces into underscores
         String result=cityTarget;
-        if (result.contains(" ")){
+        if (result.trim().contains(" ")){
             result = result.replaceAll("\\s+","_");
             System.out.println("1234444");
         }
