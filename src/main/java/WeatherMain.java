@@ -27,6 +27,8 @@ public class WeatherMain {
 
         try {//this is to connect to the website and pull the data
             Document doc = Jsoup.connect(url).get();
+            
+            System.out.println(doc);
         } catch (IOException e) {
             e.printStackTrace();
         }
