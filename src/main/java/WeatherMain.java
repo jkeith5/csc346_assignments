@@ -40,6 +40,8 @@ public class WeatherMain {
             while ((line=bufferedReader.readLine())!= null){
                 pw.println(line);
             }
+            pw.close();
+
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -88,7 +90,7 @@ public class WeatherMain {
         }catch (Exception e){
 
         }
-        xmlFile.deleteOnExit();
+//        xmlFile.deleteOnExit();
 
     }
 
